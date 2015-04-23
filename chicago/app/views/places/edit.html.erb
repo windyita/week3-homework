@@ -1,0 +1,32 @@
+<h2>Update the Place</h2>
+<p>
+<form action="/places/<%= @place.id %>/update">
+  <p>
+  Title:<br>
+  <%= text_field_tag 'title', @place.title, maxlength: 100, size: 50 %>
+  <br>
+  </p>
+
+  <p>
+  Photo URL:<br>
+  <%= text_field_tag 'photo_url', @place.photo_url, maxlength: 100, size: 50 %>
+  <br>
+  </p>
+
+  <p>
+  Price:<br>
+  <input type="number" name="price" value=<%= @place.admission_price %>>
+  <br>
+  </p>
+
+  <p>
+  Description:<br>
+  <textarea name="description" rows="10" cols="50"><%= @place.description %></textarea>
+  <br>
+  </p>
+
+  <p>
+  <input type="submit" value="Update">
+  </p>
+</form>
+</p>

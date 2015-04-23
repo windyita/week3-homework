@@ -1,0 +1,40 @@
+<h2 style="text-align:center"><%= @place.title %></h2>
+<p>
+  <%= link_to "【Edit】", "/places/#{@place.id}/edit" %>
+</p>
+<p>
+  <h3>Admission Price</h3>
+  <%= number_to_currency  @place.admission_price/100 %>
+</p>
+
+<p>
+  <h3>Picture</h3>
+  <%= image_tag @place.photo_url %>
+<p>
+
+<p>
+  <h3>Description</h3>
+  <%= simple_format @place.description %>
+<p>
+
+<p>
+  <h3>Write a Review</h3>
+  <form action="/places/<%= @place.id %>/review">
+    Title:<br><input type="text" name="title" size="30" maxlength="100"><br>
+    Star: <input type="radio" name="rating" value="1" checked> 1 <input type="radio" name="rating" value="2"> 2 <input type="radio" name="rating" value="3"> 3 <input type="radio" name="rating" value="4"> 4 <input type="radio" name="rating" value="5"> 5 <br>
+    Description:<br><textarea name="description" rows="10" cols="50"></textarea><br>
+    <input type="submit" value="Submit">
+<p>
+
+<p>
+<h3>Reviews</h3>
+<% if @reviews != nil %>
+  <% @reviews.each do |review| %>
+    <li>
+      title: <%= review.title %><br>
+      star: <%= review.rating %><br>
+      description: <%= simple_format review.description %>
+    </li>
+  <% end %>
+<% end %>
+</p>
